@@ -11,19 +11,11 @@ const router = new VueRouter({
     path: '/',
     redirect: '/sub-app-1'
   }, {
-    path: '/sub-app-1',
+    path: '/sub-app-1*',
     name: 'SubApp1',
     component: SubApp1
   }, {
-    path: '/sub-app-1/*',
-    name: 'SubApp1All',
-    component: SubApp1
-  }, {
-    path: '/sub-app-2',
-    name: 'SubApp2',
-    component: SubApp2
-  }, {
-    path: '/sub-app-2/*',
+    path: '/sub-app-2*',
     name: 'SubApp2All',
     component: SubApp2
   }]

@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('开始插入标签---------------');
-// 读取模块列表 ----------------------------------------------
+console.log('开始读取文件---------------');
+// 需要读取模块列表
 const moduleList = {
-  test: true,
-  home: true
+  'sub-app-1': true,
 }
 const modulePath = path.resolve(__dirname, '../public/module-lib');
 // script标签链接

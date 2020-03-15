@@ -79,6 +79,9 @@ module.exports = merge(baseWebpackConfig, {
       {
         from: path.join(__dirname, '../public/static'),
         to: path.join(__dirname, '../dist/static'),
+      }, {
+        from: path.join(__dirname, '../public/sub-app'),
+        to: path.join(__dirname, '../dist/sub-app'),
       }
     ])
   ]
