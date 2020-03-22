@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const MyPlugin = require('./plugin');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
@@ -40,7 +41,8 @@ module.exports = merge(baseWebpackConfig, {
     'vue': 'Vue',
     'vue-router': 'VueRouter',
     'vuex': 'Vuex',
-    'axios': 'axios'
+    'axios': 'axios',
+    'element-ui': 'ElementUI'
   },
   module: {
     rules: [
@@ -70,7 +72,7 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../public/index.html'),
-      inject: true
+      inject: true,
     }),
     new MiniCssExtractPlugin({
       filename: "css/styles.css"
@@ -83,6 +85,7 @@ module.exports = merge(baseWebpackConfig, {
         from: path.join(__dirname, '../public/sub-app'),
         to: path.join(__dirname, '../dist/sub-app'),
       }
-    ])
+    ]),
+    // new MyPlugin(),
   ]
 })

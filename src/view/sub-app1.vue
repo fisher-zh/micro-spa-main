@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    <h4>home</h4>
-    <button @click="goLink">go sub-app-2</button>
+  <div class="router-container">
     <div id="sub-app1" class="sub-app1"></div>
   </div>
 </template>
@@ -14,11 +12,6 @@ export default {
     return {}
   },
   methods: {
-    goLink () {
-      this.$router.push({
-        path: '/sub-app-2'
-      })
-    }
   },
   mounted () {
     console.log('----------------------------');
