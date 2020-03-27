@@ -64,7 +64,6 @@ module.exports = merge(baseWebpackConfig, {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
-          'less-loader',
         ],
       },
     ]

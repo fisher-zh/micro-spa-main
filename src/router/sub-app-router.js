@@ -1,8 +1,10 @@
 import SubApp1 from '../view/sub-app1';
 import SubApp2 from '../view/sub-app2';
 
+import formattingRoutes from '../utils/formatting-routes';
+
 const subAppRouter = [{
-  path: '/sub-app-1*',
+  path: '/sub-app-1',
   name: 'SubApp1',
   component: SubApp1,
   meta: {
@@ -11,7 +13,7 @@ const subAppRouter = [{
     isSubApp: true
   }
 }, {
-  path: '/sub-app-2*',
+  path: '/sub-app-2',
   name: 'SubApp2All',
   component: SubApp2,
   meta: {
@@ -20,5 +22,7 @@ const subAppRouter = [{
     isSubApp: true
   }
 }]
+
+formattingRoutes(subAppRouter)
 
 export default subAppRouter

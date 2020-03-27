@@ -34,8 +34,7 @@ module.exports = merge(baseWebpackConfig, {
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader',
-          'less-loader',
+          'sass-loader'
         ],
       },
     ]
