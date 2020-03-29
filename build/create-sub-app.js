@@ -16,10 +16,10 @@ if (!reg.test(name)) {
 const subAppName = name;
 
 // 创建子项目文件夹
-// createSubApp()
+// createSubApp();
 
 // 创建子项目路由文件
-createRouteFile();
+// createRouteFile();
 
 // 绑定数据
 
