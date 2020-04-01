@@ -18,7 +18,7 @@ const router = new VueRouter({
       }
     }, {
       path: '/',
-      redirect: '/sub-app-1'
+      redirect: '/sub-app-1' // 重定向到某个路由
     },
     ...SubAppRouter
   ]
