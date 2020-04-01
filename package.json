@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack-dev-server --config build/webpack.dev.config.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "create-sub-app": "node build/create-sub-app.js"
   },
   "repository": {
     "type": "git",

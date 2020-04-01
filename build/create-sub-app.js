@@ -20,7 +20,7 @@ const subAppName = name;
 createSubApp()
 
 // 创建子项目路由文件
-createRouteFile();
+// createRouteFile();
 
 // 写入到路由文件
 writeRoute();
