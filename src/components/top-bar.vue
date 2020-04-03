@@ -1,6 +1,5 @@
 <template>
   <div class="top-bar">
-    <h1 class="logo">MICRO SPA</h1>
     <span>基于Vue的单页面应用微服务架构</span>
   </div>
 </template>
@@ -22,15 +21,8 @@ export default {
   width: 100%;
   height: 80px;
   line-height: 80px;
-  background-color: #409eff;
-  z-index: 1;
-  color: #fff;
-  padding: 0 24px;
-  .logo {
-    display: inline-block;
-    font-size: 32px;
-    font-weight: 100;
-    margin-right: 24px;
-  }
+  // background-color: #fff;
+  z-index: 0;
+  padding: 0 24px 0 224px;
 }
 </style>
