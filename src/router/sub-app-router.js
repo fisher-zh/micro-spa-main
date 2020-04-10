@@ -2,6 +2,7 @@ import formattingRoutes from '../utils/formatting-routes';
 
 import SubApp1 from '../view/sub-app1';
 import SubApp2 from '../view/sub-app2';
+/* insert route file */
 
 const subAppRouter = [{
   path: '/sub-app-1',

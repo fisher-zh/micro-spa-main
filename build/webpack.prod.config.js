@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const MyPlugin = require('./plugin');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
@@ -84,7 +83,6 @@ module.exports = merge(baseWebpackConfig, {
         from: path.join(__dirname, '../public/sub-app'),
         to: path.join(__dirname, '../dist/sub-app'),
       }
-    ]),
-    // new MyPlugin(),
+    ])
   ]
 })
