@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
+const downloadGitRepo = require('download-git-repo');
 
 const run = async () => {
   let userAnswer = null;
@@ -22,26 +23,31 @@ const run = async () => {
   })
 
   // 创建子项目文件夹
-  // createSubApp(userAnswer.name);
-
+  createSubApp(userAnswer.name);
   // 创建子项目路由文件
-  // createRouteFile(userAnswer.name);
-
+  createRouteFile(userAnswer.name);
   // 写入到路由文件
   writeRoute(userAnswer.name);
+  // 下载子项目
+  const filePath = path.resolve(__dirname, '../../' + userAnswer.name);
+  console.log(filePath)
+  await downloadFile('fisher-zh/micro-spa-sub', filePath);
+  console.log('子项目初始化完成')
 }
 
-// 填写参数
-
-
-// 绑定数据
-
-
+/**
+ * 创建子项目文件夹
+ * @param {String} subAppName 新建子项目的名称
+ */
 function createSubApp (subAppName) {
   const filePath = path.resolve(__dirname, '../../' + subAppName)
   fs.mkdirSync(filePath);
 }
 
+/**
+ * 创建包含子项目的路由文件
+ * @param {String} subAppName 新建子项目的名称
+ */
 function createRouteFile (subAppName) {
   // 读取Vue文件模板
   const VueTemplate = fs.readFileSync(path.resolve(__dirname, '../public/template/sub-app.vue'));
@@ -55,6 +61,10 @@ function createRouteFile (subAppName) {
   }
 }
 
+/**
+ * 写入路由文件数据
+ * @param {String} subAppName 新建子项目的名称
+ */
 function writeRoute (subAppName) {
   const routesFile = fs.readFileSync(path.resolve(__dirname, '../src/router/sub-app-router.js'));
   const routesFileString = routesFile.toString();
@@ -69,13 +79,43 @@ function writeRoute (subAppName) {
       componentName += stringNameKey;
     }
   }
-  const newFileString = routesFileString.replace('/* insert route file */', `import ${componentName} from '../view/${fileName}';\n/* insert route file */`);
-  console.log(newFileString);
-  // const result = fs.writeFileSync(path.resolve(__dirname, '../src/router/sub-app-router.js'), newFileString);
-  // if (result) {
-  //   console.log('写入路由失败');
-  //   console.log(result);
-  // }
+  const routerObject = `{
+    path: '/${fileName}',
+    name: '${componentName}All',
+    component: ${componentName},
+    meta: {
+      isAuth: true,
+      keepAlive: false,
+      isSubApp: true
+    }
+  }`
+  const newFileString =
+    routesFileString.replace('/* insert route file */', `import ${componentName} from '../view/${fileName}';\n/* insert route file */`)
+    .replace('/* insert route object */', `, ${routerObject}/* insert route object */`);
+  const result = fs.writeFileSync(path.resolve(__dirname, '../src/router/sub-app-router.js'), newFileString);
+  if (result) {
+    console.log('写入路由失败');
+    console.log(result);
+  }
+}
+
+/**
+ *
+ * @param {String} gitrepo git地址
+ * @param {String} path 文件路径
+ */
+const downloadFile = function (gitrepo, path) {
+  return new Promise((resolve, reject) => {
+    downloadGitRepo(gitrepo, path, function (err) {
+      if (err) {
+        console.log('下载失败')
+        console.log(err);
+        reject(err);
+      }
+      resolve();
+    })
+  })
+
 }
 
 run();
