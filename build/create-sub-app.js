@@ -30,8 +30,10 @@ const run = async () => {
   writeRoute(userAnswer.name);
   // 下载子项目
   const filePath = path.resolve(__dirname, '../../' + userAnswer.name);
-  console.log(filePath)
+  console.log('子项目文件下载中...');
   await downloadFile('fisher-zh/micro-spa-sub', filePath);
+  // 替换子项目字段
+
   console.log('子项目初始化完成')
 }
 
