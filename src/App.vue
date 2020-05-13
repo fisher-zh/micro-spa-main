@@ -46,7 +46,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 0;
-  padding: 104px 24px 24px 224px;
+  padding: 128px 24px 24px 224px;
 }
 .router-container {
   position: relative;

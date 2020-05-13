@@ -1,20 +1,17 @@
 <template>
   <div class="left-menu">
     <h1 class="logo">MICRO SPA</h1>
-    <el-menu
-      :default-active="defaultActive"
-      router
-      style="height: 100%;"
-    >
-      <el-menu-item index="/sub-app-1">
+    <div class="menu">
+      <div
+        class="menu-cell"
+        v-for="menuItem in menuList"
+        :key="menuItem.path"
+        @click="go(menuItem.path)"
+      >
         <i class="el-icon-menu"></i>
-        <span slot="title">子应用一</span>
-      </el-menu-item>
-      <el-menu-item index="/sub-app-2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">子应用二</span>
-      </el-menu-item>
-    </el-menu>
+        <span slot="title">{{ menuItem.name }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,14 +20,22 @@ export default {
   name: 'left-menu',
   data () {
     return {
-      defaultActive: '/sub-app-1',
-      menuList: [
-        '/sub-app-1',
-        '/sub-app-2'
-      ]
+      menuList: [{
+        path: '/sub-app-1',
+        name: '子应用一'
+      }, {
+        path: '/sub-app-2',
+        name: '子应用二'
+      }]
     }
   },
   methods: {
+    go (path) {
+      console.log(path);
+      this.$router.push({
+        path: path
+      })
+    }
   }
 }
 </script>
@@ -56,6 +61,19 @@ export default {
     font-size: 32px;
     font-weight: 100;
     margin-right: 24px;
+  }
+  .menu {
+    position: relative;
+    width: 200px;
+    height: 100%;
+    &-cell {
+      display: block;
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+    }
   }
 }
 </style>
