@@ -19,7 +19,10 @@ module.exports = merge(baseWebpackConfig, {
     host: config.dev.host || 'localhost',
     port: config.dev.port || 8080,
     proxy: config.dev.proxy || {},
-    stats: 'minimal'
+    stats: 'minimal',
+    historyApiFallback: {
+      index: config.dev.publicPath + 'index.html'
+    }
   },
   externals: {
     'vue': 'Vue',

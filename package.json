@@ -7,7 +7,9 @@
     "start": "npm run dev",
     "dev": "webpack-dev-server --config build/webpack.dev.config.js",
     "build": "node build/build.js",
-    "create-sub-app": "node build/create-sub-app.js"
+    "create-sub": "node build/create-sub-app.js",
+    "update-sub-dev": "node build/update-sub-app.js dev",
+    "update-sub-prod": "node build/update-sub-app.js prod"
   },
   "repository": {
     "type": "git",

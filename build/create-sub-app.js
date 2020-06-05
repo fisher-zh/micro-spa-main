@@ -33,7 +33,12 @@ const run = async () => {
   console.log('子项目文件下载中...');
   await downloadFile('fisher-zh/micro-spa-sub', filePath);
   // 替换子项目字段
-
+  replaceSubAppName(`../../${userAnswer.name}/build/webpack.prod.config.js`, userAnswer.name);
+  replaceSubAppName(`../../${userAnswer.name}/public/index.html`, userAnswer.name);
+  replaceSubAppName(`../../${userAnswer.name}/src/routes/index.js`, userAnswer.name);
+  replaceSubAppName(`../../${userAnswer.name}/src/main.js`, userAnswer.name);
+  replaceSubAppName(`../../${userAnswer.name}/package.json`, userAnswer.name);
+  replaceSubAppName(`../../${userAnswer.name}/config/index.js`, userAnswer.name);
   console.log('子项目初始化完成')
 }
 
@@ -53,8 +58,8 @@ function createSubApp (subAppName) {
 function createRouteFile (subAppName) {
   // 读取Vue文件模板
   const VueTemplate = fs.readFileSync(path.resolve(__dirname, '../public/template/sub-app.vue'));
-  const VueTemplateString = VueTemplate.toString()
-  const fileString = VueTemplateString.replace(/sub-app/g, subAppName)
+  const VueTemplateString = VueTemplate.toString();
+  const fileString = VueTemplateString.replace(/sub-app/g, subAppName);
   // 创建vue文件
   const result = fs.writeFileSync(path.resolve(__dirname, '../src/view/' + subAppName + '.vue'), fileString);
   if (result) {
@@ -82,7 +87,7 @@ function writeRoute (subAppName) {
     }
   }
   const routerObject = `{
-    path: '/${fileName}',
+    path: '/${fileName}*',
     name: '${componentName}All',
     component: ${componentName},
     meta: {
@@ -118,6 +123,21 @@ const downloadFile = function (gitrepo, path) {
     })
   })
 
+}
+
+/**
+ * 文件内的项目名
+ * @param {*} filePath 文件地址
+ */
+function replaceSubAppName (filePath, subAppName) {
+  const file = fs.readFileSync(path.resolve(__dirname, filePath));
+  const fileString = file.toString();
+  const newFileString = fileString.replace(/sub-app-template/g, subAppName);
+  const result = fs.writeFileSync(path.resolve(__dirname, filePath), newFileString);
+  if (result) {
+    console.log('子项目文件内项目名替换失败');
+    console.log(result);
+  }
 }
 
 run();
