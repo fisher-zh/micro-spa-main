@@ -6,7 +6,7 @@ const config = require('../config');
 module.exports = {
   entry: path.join(__dirname, '../src/main.js'),
   output: {
-    filename: '[name].[hash].js',
+    filename: 'js/[name].[hash].js',
     path: path.join(__dirname, '../dist'),
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.publicPath
@@ -38,7 +38,8 @@ module.exports = {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000
+          limit: 10000,
+          outputPath: 'video/'
         }
       },
       {
@@ -46,6 +47,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
+          outputPath: 'font/'
         }
       }
     ]

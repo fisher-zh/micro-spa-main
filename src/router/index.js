@@ -2,12 +2,22 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import SubAppRouter from './sub-app-router';
 // view组件
-import Login from '../view/login';
+import Home from '../view/home';
+const Login = () => import('../view/login');
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+      meta: {
+        isAuth: false, // 鉴权参数
+        keepAlive: true
+      }
+    },
     {
       path: '/login',
       name: 'Login',
@@ -16,9 +26,6 @@ const router = new VueRouter({
         isAuth: false, // 鉴权参数
         keepAlive: false
       }
-    }, {
-      path: '/',
-      redirect: '/sub-app-1' // 重定向到某个路由
     },
     ...SubAppRouter
   ]

@@ -73,7 +73,8 @@ module.exports = merge(baseWebpackConfig, {
       inject: true,
     }),
     new MiniCssExtractPlugin({
-      filename: "css/styles.css"
+      filename: "css/[name].[contenthash].css",
+      chunkFilename: "css/[id].[contenthash].css"
     }),
     new CopyWebpackPlugin([
       {
