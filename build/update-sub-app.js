@@ -20,7 +20,7 @@ const dirList = fs.readdirSync(devDir);
 const modulejsList = [];
 const reg = /^module\.[0-9]+\.js$/;
 for (let i = 0; i < dirList.length; i++) {
-  const appDir = path.resolve(__dirname, '../public/sub-app/' + dirList[i]);
+  const appDir = path.resolve(__dirname, devDirString + 'sub-app/' + dirList[i]);
   const appFileList = fs.readdirSync(appDir);
   console.log(appFileList);
   for (let j = 0; j < appFileList.length; j++) {
