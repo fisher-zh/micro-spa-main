@@ -1,6 +1,7 @@
 const path = require('path');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const config = require('../config');
 
 module.exports = {
@@ -14,17 +15,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        include: path.join(__dirname, "../src"),
-        exclude: path.join(__dirname, "../node_modules"),
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            formatter: require('eslint-friendly-formatter')
-          }
-        }
-      },
       {
         test: /\.vue$/,
         loader: 'vue-loader'
@@ -67,10 +57,19 @@ module.exports = {
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ['You application is running here http://localhost:' + config.dev.port]
+        messages: ['You application is running here http://localhost:' + config.dev.port],
+        clearConsole: true
       },
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ESLintPlugin({
+      context: path.join(__dirname, '../src'),
+      eslintPath: require.resolve('eslint'),
+      extensions: ['js', 'vue'],
+      formatter: require('eslint-friendly-formatter'),
+      useEslintrc: true,
+      ignore: true
+    })
   ],
   resolve: {
     extensions: ['.js', '.json', '.vue']
