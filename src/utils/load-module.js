@@ -21,7 +21,7 @@ function loadModule (jsArray, cssArray) {
  * @param {string} jsLink  js地址
  */
 function loadJs (jsLink) {
-  let script = document.createElement('script');
+  const script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = jsLink;
   document.getElementsByTagName('body')[0].appendChild(script);
@@ -32,7 +32,7 @@ function loadJs (jsLink) {
  * @param {*} cssLink css地址
  */
 function loadCss (cssLink) {
-  let style = document.createElement('style');
+  const style = document.createElement('style');
   style.setAttribute('type', 'text/css');
   style.setAttribute('rel', 'stylesheet');
   style.setAttribute('href', cssLink);
