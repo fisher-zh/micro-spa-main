@@ -8,12 +8,12 @@
     "dev": "webpack-dev-server --config build/webpack.dev.config.js",
     "build": "node build/build.js",
     "create-sub": "node build/create-sub-app.js",
-    "update-sub-dev": "node build/update-sub-app.js dev",
-    "update-sub-prod": "node build/update-sub-app.js prod"
+    "update-sub:dev": "node build/update-sub-app.js dev",
+    "update-sub:prod": "node build/update-sub-app.js prod"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:fisher-zh/micro-spa-main.git"
   },
   "keywords": [
     "micro",

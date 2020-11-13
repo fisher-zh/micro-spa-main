@@ -28,6 +28,10 @@ export default {
   mounted () {
     console.log('----------------------------');
     console.log('基座工程初始化完毕');
+    // this.$http({
+    //   method: 'get',
+    //   url: '/api/mock/getname'
+    // })
   }
 };
 </script>
