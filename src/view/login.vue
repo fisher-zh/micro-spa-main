@@ -20,7 +20,7 @@
 <script>
 export default {
   name: 'Login',
-  data() {
+  data () {
     return {
       form: {
         username: '',

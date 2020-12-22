@@ -18,7 +18,8 @@ export default {
     LeftMenu
   },
   data () {
-    return {}
+    return {
+    }
   },
   watch: {
     $route () {

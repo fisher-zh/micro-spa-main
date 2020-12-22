@@ -95,7 +95,7 @@ function writeRoute (subAppName) {
       keepAlive: false,
       isSubApp: true
     }
-  }`
+  }, `
   const newFileString =
     routesFileString.replace('/* insert route file */', `import ${componentName} from '../view/${fileName}';\n/* insert route file */`)
     .replace('/* insert route object */', `, ${routerObject}/* insert route object */`);
